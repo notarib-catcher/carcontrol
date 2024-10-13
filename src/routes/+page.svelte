@@ -13,8 +13,8 @@
     Signout
 </button>
 
-{#if $page.data.session}
-{$page.data.session.user.email}
+{#if $page.data.session?.user}
+Logged in as: {$page.data.session.user.email}
 {:else}
 No session
 {/if}
