@@ -1,6 +1,11 @@
 <script>
     import { signIn, signOut } from '@auth/sveltekit/client'
     import { page } from '$app/stores';
+    import { browser } from '$app/environment';
+
+    if(browser){
+        console.log($page.data.session)
+    }
 </script>
 
 <h1>Welcome to SvelteKit</h1>
