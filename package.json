@@ -24,6 +24,8 @@
 	"type": "module",
 	"dependencies": {
 		"@auth/sveltekit": "^1.7.0",
-		"dotenv": "^16.4.5"
+		"dotenv": "^16.4.5",
+		"mongodb": "^6.9.0",
+		"spotify-web-api-node": "^5.0.2"
 	}
 }
