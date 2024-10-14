@@ -54,6 +54,7 @@ export async function GET(req) {
         })
     }
 
+    console.log(tokenNew)
     // @ts-ignore
     await status.findOneAndUpdate({_id: "spotify-creds"},
         {
