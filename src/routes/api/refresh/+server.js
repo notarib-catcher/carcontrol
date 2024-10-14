@@ -61,7 +61,7 @@ export async function GET(req) {
             $set:
             {
                 token: tokenNew.body.access_token,
-                refresh: tokenNew.body.refresh_token,
+                refresh: tokenNew.body.refresh_token || ccreds.refresh,
                 eat: new Date().getTime() + (tokenNew.body.expires_in * 1000)
             }
         }
