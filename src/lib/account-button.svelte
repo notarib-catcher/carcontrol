@@ -4,7 +4,7 @@
 </script>
 
 <div>
-    <button class=" border-2 font-pt-mono-regular active:scale-95 text-white rounded-md bgtransparent p-2" on:click={() => {
+    <button class=" border-2 font-pt-mono-regular active:scale-95 hover:bg-grey-800 transition-all duration-100 text-white rounded-md bg-transparent p-2" on:click={() => {
         if($page.data.session?.user){
             signOut()
         }
