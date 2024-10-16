@@ -1,7 +1,9 @@
-import { fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
 import { config } from "dotenv"
 import * as URL from "url"
 config()
+
+import SpotifyWebApi from "spotify-web-api-node";
 
 import { MongoClient } from 'mongodb';
 
@@ -135,6 +137,37 @@ export const actions = {
         }
 
         //Parsed and valid
+
+        const spotifyTrackID = spotifyURLParsed.pathname.replaceAll("track","").replaceAll("/","")
+        console.log(spotifyTrackID)
+
+        const spotcred = await status.findOne({
+            "_id":{
+                //@ts-ignore
+                "$eq":"spotify-creds"
+            }
+        })
+
+        if(!spotcred){
+            return fail(503)
+        }
+
+        if(spotcred?.eat < Date.now()){
+            return fail(511)
+        }
+
+        const spotify = new SpotifyWebApi({
+            clientId: process.env.SPOTIFY_CLIENTID,
+            clientSecret: process.env.SPOTIFY_SECRET,
+            redirectUri: (process.env.NODE_ENV === 'development')?"http://localhost/spotify/callback":"https://carcontrol.aary.dev/spotify/callback"
+        }) 
+
+        spotify.setAccessToken(spotcred.token)
+
+        await spotify.addToQueue("spotify:track:"+spotifyTrackID)
+
+        return redirect(302,"/?added")
+
         
     }
 }

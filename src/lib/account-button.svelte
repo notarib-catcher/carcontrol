@@ -4,11 +4,6 @@
 </script>
 
 <div>
-    <div>
-        {#if $page.data.session?.user}
-            Hello, {$page.data.session.user.name}
-        {/if}
-    </div>
     <button class=" border-b-2  rounded-md bg-slate-400 p-2" on:click={() => {
         if($page.data.session?.user){
             signOut()
