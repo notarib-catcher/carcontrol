@@ -67,6 +67,27 @@ export const load = async (event) => {
         }
     })
 
+    if((invite.uses + 1) >= invite.maxuses){
+        await acl.findOneAndUpdate({
+            // @ts-ignore
+            _id:"invite"
+        },{
+            $set:{
+                content:"",
+                uses:0
+            }
+        })
+    }
+
+    else{
+        await acl.findOneAndUpdate({
+            // @ts-ignore
+            _id:"invite"
+        },{
+            $inc: "uses"
+        })
+    }
+
     throw redirect(302,"/?whitelisted")
 
 }
