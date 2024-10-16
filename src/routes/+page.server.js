@@ -169,6 +169,61 @@ export const actions = {
         return redirect(302,"/?added")
 
         
+    },
+    toggleplayback : async (event) => {
+        const session = await event.locals.auth();
+    
+        if (!session?.user) {
+            // @ts-ignore
+            return fail(401, "Not logged in"); //Not logged in => No access
+        }
+
+        const adminID = await acl.findOne({
+            "_id" : {
+                //@ts-ignore
+                "$eq" : "admin-email"
+            }
+        })
+    
+
+        if(session.user.email != adminID?.email){
+            // @ts-ignore
+            return fail(403, "unauthorized")
+        }
+
+        //AUTHORIZED
+
+        const cstatus = await status.findOne({
+            "_id":{
+                //@ts-ignore
+                "$eq":"status"
+            }
+        })
+
+        await status.findOneAndUpdate({
+            "_id":{
+                //@ts-ignore
+                "$eq":"status"
+            }
+        },
+        {
+           "$set":{
+            // @ts-ignore
+            status: !(cstatus.status)
+           }     
+        })
+
+        
+
+        if(cstatus.status){
+            return redirect(302,"/?off")
+        }
+        else{
+            return redirect(302,"/?on")
+        }   
+        
+
+        
     }
 }
 
