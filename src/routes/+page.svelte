@@ -17,6 +17,7 @@
     <AccountButton></AccountButton>
 </div>
 
+{#if data.access >= 1}
 <div class=" h-[100lvh] w-[100lvw] bg-gray-900 flex items-center justify-center">
     <div class=" border-2 border-green-600 rounded-md items-center justify-center flex flex-col p-6 pb-8">
         {#if data.access >= 1}
@@ -36,11 +37,15 @@
     </div>
     
 </div>
-
-
-
-
-
-
-
-<AccountButton />
+{:else}
+<div class=" h-[100lvh] w-[100lvw] bg-gray-900 flex items-center justify-center">
+    <div class=" border-2 font-pt-mono-regular border-red-600 text-center text-white rounded-md items-center justify-center flex flex-col p-6">
+        {#if $page.data.session}
+            You are not whitelisted.
+        {:else}
+            You are not logged in.
+        {/if}
+    </div>
+    
+</div>
+{/if}

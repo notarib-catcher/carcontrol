@@ -5,6 +5,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 
+html{
+    user-select: none;
+}
+
 .font-pt-mono-regular {
     font-family: "PT Mono", monospace;
     font-weight: 400;
