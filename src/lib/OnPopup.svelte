@@ -16,7 +16,7 @@
 
 <div class = "absolute top-0 w-screen h-fit z-[2000] pointer-events-none">
     {#if isAdded}
-    <div class=" font-uni font-pt-mono-regular text-xl font-semibold h-[50px] w-fit p-2 bg-transparent text-white border-2 border-green-600 mx-auto ModalPopIn">
+    <div class=" rounded-md font-uni font-pt-mono-regular text-xl font-semibold h-[50px] w-fit p-2 bg-transparent text-white border-2 border-green-600 mx-auto ModalPopIn">
         System Enabled 
     </div>
     {/if}

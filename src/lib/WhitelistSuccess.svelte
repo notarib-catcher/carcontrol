@@ -6,7 +6,7 @@
     let isAdded = false
     if(browser){
         const urlParams = new URLSearchParams(window.location.search);
-        isAdded = urlParams.has('off');
+        isAdded = urlParams.has('whitelisted');
         setTimeout(() => {
             window.history.pushState("", document.title, window.location.pathname);
         }, 200)
@@ -16,8 +16,8 @@
 
 <div class = "absolute top-0 w-screen h-fit z-[2000] pointer-events-none">
     {#if isAdded}
-    <div class=" rounded-md font-uni font-pt-mono-regular text-xl font-semibold h-[50px] w-fit p-2 bg-transparent text-white border-2 border-red-600 mx-auto ModalPopIn">
-        System Disabled 
+    <div class=" rounded-md font-uni font-pt-mono-regular text-xl font-semibold h-[50px] w-fit p-2 bg-transparent text-white border-2 border-green-600 mx-auto ModalPopIn">
+        Whitelisted! 
     </div>
     {/if}
 </div>

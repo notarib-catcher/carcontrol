@@ -8,6 +8,9 @@
     import AddedPopup from '$lib/AddedPopup.svelte';
     import OffPopup from '$lib/OffPopup.svelte';
     import OnPopup from '$lib/OnPopup.svelte';
+    import AlreadyWhitelisted from '$lib/AlreadyWhitelisted.svelte';
+    import WhitelistSuccess from '$lib/WhitelistSuccess.svelte';
+    import InviteFail from '$lib/InviteFail.svelte';
 
     export let data
 
@@ -16,6 +19,9 @@
 <OnPopup></OnPopup>
 <OffPopup></OffPopup>
 <AddedPopup></AddedPopup>
+<AlreadyWhitelisted></AlreadyWhitelisted>
+<InviteFail></InviteFail>
+<WhitelistSuccess></WhitelistSuccess>
 
 <div class=" fixed top-2 right-2 ">
     <AccountButton></AccountButton>
