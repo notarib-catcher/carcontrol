@@ -39,7 +39,7 @@
 </div>
 {:else}
 <div class=" h-[100lvh] w-[100lvw] bg-gray-900 flex items-center justify-center">
-    <div class=" border-2 font-pt-mono-regular border-red-600 text-center text-white rounded-md items-center justify-center flex flex-col p-6">
+    <div class=" border-2 font-pt-mono-regular bg-red-600 bg-opacity-10 border-red-600 text-center text-white rounded-md items-center justify-center flex flex-col p-6">
         {#if $page.data.session}
             You are not whitelisted.
         {:else}
