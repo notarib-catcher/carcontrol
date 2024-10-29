@@ -84,7 +84,9 @@ export const load = async (event) => {
             // @ts-ignore
             _id:"invite"
         },{
-            $inc: "uses"
+            $inc: {
+                "uses" : 1
+            }
         })
     }
 
